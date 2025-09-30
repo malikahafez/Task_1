@@ -80,6 +80,7 @@ export async function updatePerk(req, res, next) {
     if (error) return res.status(400).json({ message: error.message });
 
     // update the perk using the validated fields - use $set to update only the provided fields
+    //Add the option {new:true} to return the updated document
     const updatedDoc = await Perk.findByIdAndUpdate(req.params.id, { $set: value},{new:true}); 
     res.json(updatedDoc);
     
